@@ -25,7 +25,7 @@
     const count=isFront?{leaf:7}:{leaf:15};
     layer.spawn=(it,anywhere)=>{
       it.x=anywhere?rand(0,layer.w):rand(-.08,-.01)*layer.w;
-      it.y=rand(0,1)*layer.h*BAND;
+      it.y=layer.yMin+rand(0,1)*(layer.yMax-layer.yMin);
     };
     for(let i=0;i<count.leaf;i++){
       const it={kind:'leaf',color:LEAVES[i%LEAVES.length],
@@ -43,6 +43,11 @@
       const r=l.canvas.getBoundingClientRect();
       if(!r.width||!r.height)return;
       l.w=r.width;l.h=r.height;l.s=Math.max(.5,l.w/1440);
+      // Mobile: the canvas covers the whole lower hero block; leaves start right at its top edge and appear almost at once.
+      const mob=matchMedia('(max-width:700px)').matches,block=document.querySelector('.scene-scroll');
+      l.yMin=0;
+      l.yMax=mob?l.h:l.h*BAND;
+      l.topFade=mob?.03:.14;
       l.canvas.width=Math.round(l.w*dpr);l.canvas.height=Math.round(l.h*dpr);
       l.ctx.setTransform(dpr,0,0,dpr,0,0);
       if(!l.ready){l.items.forEach(it=>l.spawn(it,true));l.ready=true;}
@@ -79,11 +84,12 @@
         it.x+=(it.vx+Math.sin(t*.6+it.phase)*it.sway*.35)*s*dt*SPEED;
         it.y+=(it.vy+Math.cos(t*.5+it.phase)*it.sway*.4)*s*dt*SPEED;
         it.rot+=it.spin*dt;
-        const m=30*s,yMax=l.h*BAND;
-        if(it.x>l.w+m){it.x=-m;it.y=rand(0,1)*yMax;}
-        if(it.y>yMax){it.y=0;it.x=rand(0,l.w);}
+        const m=30*s,yMax=l.yMax,yMin=l.yMin;
+        if(it.x>l.w+m){it.x=-m;it.y=yMin+rand(0,1)*(yMax-yMin);}
+        if(it.y>yMax){it.y=yMin;it.x=rand(0,l.w);}
         if(it.y<0)it.y=0;
-        const edge=Math.max(0,Math.min(1,it.y/(yMax*.14),(yMax-it.y)/(yMax*.14)));
+        const span=Math.max(1,yMax-yMin);
+        const edge=Math.max(0,Math.min(1,(it.y-yMin)/(span*l.topFade),(yMax-it.y)/(span*.14)));
         drawLeaf(ctx,it,t,s,edge);
       });
       ctx.globalAlpha=1;
@@ -97,7 +103,7 @@
   function stop(){running=false;if(raf)cancelAnimationFrame(raf);raf=0;}
   function clearAll(){layers.forEach(l=>l.ctx.clearRect(0,0,l.w,l.h));}
 
-  if('ResizeObserver' in window)new ResizeObserver(resize).observe(scene);
+  if('ResizeObserver' in window){const ro=new ResizeObserver(resize);ro.observe(scene);const blk=document.querySelector('.scene-scroll');if(blk)ro.observe(blk);}
   window.addEventListener('resize',resize);
   resize();
   let visible=true;

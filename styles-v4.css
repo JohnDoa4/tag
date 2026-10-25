@@ -316,4 +316,6 @@ body:has(#lightbox[open]){overflow:hidden}
   /* gallery: no captions on the photos; the text appears only in the full-screen viewer */
   .moments figure figcaption.moment-caption{display:none}
   .moment-open::after{display:none}
+  /* leaves: canvas spans the whole lower hero block (its top edge is the scene top minus the 60px block padding) */
+  .fx{top:-60px;height:calc(var(--th)*.6667 + 60px)}
 }
