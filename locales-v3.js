@@ -1,0 +1,256 @@
+/*
+  Localization file for home-v3.html.
+
+  How it works
+  - The English text in the HTML is the source. Each key below is an English string exactly as it appears on the page
+    (whitespace is collapsed; alt, aria-label, placeholder, title and dialog texts are included).
+  - To translate a string, add or edit "English": "Translation" in the language block.
+  - To add a language: add a block (e.g. ru:{...}) and one entry to LANGUAGES. The switcher in the header lists
+    only EN and TR for now.
+  - Missing keys simply stay in English.
+
+  DRAFT: the Turkish text is a machine-assisted draft and has not been reviewed by a native speaker or by the client.
+  Terminology (okuma kulübü, atölye, eğitim, kurs) follows the client's own folder names where known. [OPEN]
+*/
+window.TGA_LANGUAGES={en:{label:'EN',name:'English',htmlLang:'en'},tr:{label:'TR',name:'Türkçe',htmlLang:'tr'}};
+
+window.TGA_LOCALES={
+tr:{
+/* Page meta */
+"Terapi Gibi Akademi — Together, around the same table":"Terapi Gibi Akademi — Birlikte, aynı masanın etrafında",
+"Reading groups, workshops and a place to think together.":"Okuma kulüpleri, atölyeler ve birlikte düşünmek için bir yer.",
+
+/* Header */
+"Skip to content":"İçeriğe geç",
+"Menu":"Menü",
+"Calendar":"Takvim",
+"Groups & workshops":"Gruplar ve atölyeler",
+"Courses":"Kurslar",
+"Shop":"Mağaza",
+"About":"Hakkımızda",
+"More":"Daha fazla",
+"Psychotherapy":"Psikoterapi",
+"Read with us":"Bizimle okuyun",
+"Contact":"İletişim",
+"Log in":"Giriş yap",
+"Terapi Gibi Akademi home":"Terapi Gibi Akademi ana sayfa",
+"Main navigation":"Ana gezinme",
+"Language":"Dil",
+
+/* Hero */
+"Terapi Gibi Akademi · Istanbul":"Terapi Gibi Akademi · İstanbul",
+"There’s a place at this":"Bu masada sizin",
+"table for you, too!":"için de bir yer var!",
+"We read, think and make things together.":"Birlikte okuyor, düşünüyor ve üretiyoruz.",
+"Explore the calendar":"Takvimi keşfedin",
+"Meet the Akademi":"Akademi ile tanışın",
+"Slow down. There’s room for you.":"Yavaşlayın. Sizin için de yer var.",
+"Three different seats beneath a tree: an open invitation to come together.":"Bir ağacın altında üç farklı koltuk: bir araya gelmeye açık davet.",
+"One tree. Many different stories.":"Tek bir ağaç. Birbirinden farklı pek çok hikâye.",
+"Good things happen together.":"Güzel şeyler birlikte olur.",
+
+/* Upcoming gatherings */
+"Coming together":"Bir araya geliyoruz",
+"November 2026":"Kasım 2026",
+"Upcoming gatherings":"Yaklaşan buluşmalar",
+"Find your way to join ↗":"Katılmanın size uygun yolunu bulun ↗",
+"NOV · SAT":"KAS · CMT",
+"Workshop":"Atölye",
+"An evening in colour":"Renklerle bir akşam",
+"Lampshade painting · At a partner café in Istanbul":"Abajur boyama · İstanbul’da iş birliği yaptığımız bir kafede",
+"3 hours":"3 saat",
+"Free":"Ücretsiz",
+"Reading group":"Okuma kulübü",
+"One book, many stories":"Tek kitap, pek çok hikâye",
+"A shared reading and conversation · At a partner café":"Ortak bir okuma ve sohbet · İş birliği yaptığımız bir kafede",
+"2 hours":"2 saat",
+"Training":"Eğitim",
+"A closer look at human experience":"İnsan deneyimine yakından bakış",
+"An introduction to the traces of trauma · At a partner gallery":"Travmanın izlerine giriş · İş birliği yaptığımız bir galeride",
+"5 hours":"5 saat",
+"₺1,200":"₺1.200",
+"Participants painting fabric lampshades at a workshop":"Bir atölyede kumaş abajur boyayan katılımcılar",
+"Explore the lampshade painting workshop":"Abajur boyama atölyesini keşfedin",
+"Explore the reading group":"Okuma kulübünü keşfedin",
+"An engraved open book with a leafy branch":"Yapraklı bir dalla birlikte, oyma baskı usulü açık kitap",
+"Explore this training":"Bu eğitimi keşfedin",
+
+/* Ways to join */
+"Ways to join":"Katılım yolları",
+"Bring your curiosity.":"Merakınızı getirin.",
+"An evening, a book, or a fresh beginning.":"Bir akşam, bir kitap ya da yeni bir başlangıç.",
+"Find a way that feels right for you.":"Size iyi gelen yolu bulun.",
+"Reading groups":"Okuma kulüpleri",
+"Read at home, meet around one table. Talk about the things a book leaves with us.":"Evde okuyun, tek bir masanın etrafında buluşun. Bir kitabın bizde bıraktıkları üzerine konuşun.",
+"Workshops":"Atölyeler",
+"Think with paint, clay and paper. No experience needed, just curiosity.":"Boya, kil ve kâğıtla düşünün. Deneyim gerekmez, merak yeter.",
+"Trainings":"Eğitimler",
+"Look more closely at one subject and make room for questions together.":"Bir konuya daha yakından bakın ve sorulara birlikte yer açın.",
+"A journey with the same group, from one meeting to the next.":"Aynı grupla, bir buluşmadan ötekine uzanan bir yolculuk.",
+
+/* Courses */
+"Learning together":"Birlikte öğrenmek",
+"More than":"Bir akşamdan",
+"one evening.":"fazlası.",
+"A shared experience that unfolds over time.":"Zamanla açılan ortak bir deneyim.",
+"Join a course as a complete series.":"Kursa tam bir seri olarak katılın.",
+"6 MEETINGS":"6 BULUŞMA",
+"Reading course":"Okuma kursu",
+"03 December":"3 Aralık",
+"Reading slowly:":"Yavaş okumak:",
+"six evenings with short novels":"kısa romanlarla altı akşam",
+"₺2,400 / course":"₺2.400 / kurs",
+"Explore the course ↗":"Kursu keşfedin ↗",
+"Explore the slow reading course":"Yavaş okuma kursunu keşfedin",
+"The Akademi reading club together after a gathering":"Akademi okuma kulübü bir buluşmanın ardından bir arada",
+"4 MEETINGS":"4 BULUŞMA",
+"Ceramics course":"Seramik kursu",
+"12 December":"12 Aralık",
+"Thinking with our hands:":"Elimizle düşünmek:",
+"a journey in ceramics":"seramikle bir yolculuk",
+"₺3,200 / course":"₺3.200 / kurs",
+"Explore the ceramics course":"Seramik kursunu keşfedin",
+"Hands shaping a ceramic bowl":"Seramik bir kase şekillendiren eller",
+
+/* Shop */
+"A little Akademi.":"Küçük bir Akademi.",
+"Every day.":"Her gün.",
+"Objects to read with, write in and take along.":"Birlikte okuyacağınız, içine yazacağınız ve yanınızda taşıyacağınız nesneler.",
+"A first look at our branded collection.":"Markalı koleksiyonumuza ilk bakış.",
+"Mug":"Kupa",
+"A small pause, a warm cup.":"Küçük bir mola, sıcak bir fincan.",
+"View product ↗":"Ürünü görün ↗",
+"T-shirt":"Tişört",
+"A little Akademi, wherever you go.":"Nereye giderseniz gidin, küçük bir Akademi.",
+"Make room for a slower day.":"Daha yavaş bir güne yer açın.",
+"Notebook":"Defter",
+"For thoughts worth keeping.":"Saklamaya değer düşünceler için.",
+"Tote bag":"Bez çanta",
+"Books, little finds, everyday things.":"Kitaplar, küçük buluntular, gündelik şeyler.",
+"View mug":"Kupayı görün",
+"An ivory ceramic mug with the Akademi logo":"Akademi logolu fildişi seramik kupa",
+"View t-shirt":"Tişörtü görün",
+"An ivory T-shirt with the Akademi logo":"Akademi logolu fildişi tişört",
+"View calendar":"Takvimi görün",
+"An illustrated desk calendar":"İllüstrasyonlu masa takvimi",
+"View notebook":"Defteri görün",
+"A sage notebook with the Akademi logo":"Akademi logolu adaçayı yeşili defter",
+"View tote bag":"Bez çantayı görün",
+"A natural cotton tote bag with the Akademi logo":"Akademi logolu doğal pamuklu bez çanta",
+
+/* Around the table */
+"Around the table":"Masanın etrafında",
+"The many ways of being together.":"Birlikte olmanın pek çok yolu.",
+"Sometimes a sentence. Sometimes paint on our hands.":"Bazen bir cümle. Bazen ellerimizde boya.",
+"Sometimes simply being in the same place.":"Bazen sadece aynı yerde olmak.",
+"A little anticipation.":"Biraz heyecan.",
+"Between the pages.":"Sayfaların arasında.",
+"Something of our own.":"Kendimize ait bir şey.",
+"Time at the same table.":"Aynı masada geçen zaman.",
+"Room for a new idea.":"Yeni bir fikre yer.",
+"View photo: A little anticipation.":"Fotoğrafı görün: Biraz heyecan.",
+"View photo: Between the pages.":"Fotoğrafı görün: Sayfaların arasında.",
+"View photo: Something of our own.":"Fotoğrafı görün: Kendimize ait bir şey.",
+"View photo: Time at the same table.":"Fotoğrafı görün: Aynı masada geçen zaman.",
+"View photo: Room for a new idea.":"Fotoğrafı görün: Yeni bir fikre yer.",
+"Preparing the table for a lampshade painting workshop":"Abajur boyama atölyesi için masa hazırlığı",
+"Members of the Akademi reading club with their books":"Akademi okuma kulübü üyeleri kitaplarıyla",
+"Workshop participants with their hand-painted plates":"Atölye katılımcıları elle boyadıkları tabaklarla",
+"People painting lampshades around a shared workshop table":"Ortak bir atölye masasında abajur boyayan insanlar",
+"A workshop host beside a table of lampshades":"Abajurlarla dolu bir masanın yanında atölye yürütücüsü",
+
+/* Follow */
+"Keep the conversation going":"Sohbet sürsün",
+"Find us in between.":"Bizi aralarda bulun.",
+"Books, small ideas, and moments between gatherings.":"Kitaplar, küçük fikirler ve buluşmalar arasındaki anlar.",
+"Follow along at your own pace.":"Kendi hızınızda takip edin.",
+
+/* About */
+"READ · THINK · MAKE":"OKU · DÜŞÜN · ÜRET",
+"About the Akademi":"Akademi hakkında",
+"One table.":"Tek masa.",
+"Many possibilities.":"Sayısız olasılık.",
+"“Space to think together.":"“Birlikte düşünmek için alan.",
+"Room to hear each other.”":"Birbirimizi duymak için yer.”",
+"Terapi Gibi Akademi is a meeting place at the intersection of psychology, art and human experience. We read, make things and leave room for a shared search for meaning.":"Terapi Gibi Akademi; psikoloji, sanat ve insan deneyiminin kesiştiği bir buluşma yeri. Birlikte okuyor, üretiyor ve ortak bir anlam arayışına yer açıyoruz.",
+"We meet in person at the cafés and art galleries we work with in Istanbul.":"İstanbul’da iş birliği yaptığımız kafe ve sanat galerilerinde yüz yüze buluşuyoruz.",
+"Let’s meet ↗":"Tanışalım ↗",
+"Participants with their decorated plates at a workshop":"Bir atölyede süsledikleri tabaklarla katılımcılar",
+"Books and tea on a table":"Masada kitaplar ve çay",
+"Hands crafting a glass mosaic lamp on a café table":"Kafe masasında cam mozaik lamba yapan eller",
+
+/* Psychotherapy */
+"Make space":"Kendinizi dinlemek",
+"to listen to yourself.":"için alan açın.",
+"A quiet starting point for learning about psychotherapy and understanding the process.":"Psikoterapiyi tanımak ve süreci anlamak için sakin bir başlangıç noktası.",
+"About psychotherapy ↗":"Psikoterapi hakkında ↗",
+"An engraved illustration of two empty armchairs, inviting conversation":"Sohbete davet eden, iki boş koltuğun oyma baskı usulü illüstrasyonu",
+
+/* Recommendations */
+"Things we take with us":"Yanımıza aldıklarımız",
+"Read, watch,":"Okuyun, izleyin,",
+"think a little further.":"biraz daha ileri düşünün.",
+"Book":"Kitap",
+"The Stranger":"Yabancı",
+"Albert Camus · Questions to take to a reading group.":"Albert Camus · Okuma kulübüne taşınacak sorular.",
+"Explore the idea ↗":"Fikri keşfedin ↗",
+"Film":"Film",
+"Eternal Sunshine of the Spotless Mind":"Sil Baştan",
+"Michel Gondry · Memory, loss, and the things we choose to keep.":"Michel Gondry · Hafıza, kayıp ve saklamayı seçtiğimiz şeyler.",
+"An idea":"Bir fikir",
+"Making room for slow reading":"Yavaş okumaya yer açmak",
+"Stay with a page a little longer. Come back to a sentence.":"Bir sayfada biraz daha kalın. Bir cümleye geri dönün.",
+"An engraved open book":"Oyma baskı usulü açık kitap",
+"An engraved cinema projector and looping film strip":"Oyma baskı usulü bir sinema projektörü ve dönen film şeridi",
+
+/* Newsletter */
+"Letters from the Akademi":"Akademi’den mektuplar",
+"A note before":"Bir sonraki buluşmamızdan",
+"our next gathering.":"önce küçük bir not.",
+"New courses, a book we’re reading, and a place saved at the table.":"Yeni kurslar, okuduğumuz bir kitap ve masada sizin için ayrılmış bir yer.",
+"Your email address":"E-posta adresiniz",
+"I would like to receive news and event announcements from the Akademi.":"Akademi’den haberler ve etkinlik duyuruları almak istiyorum.",
+"Join the newsletter":"Bültene katıl",
+"Thank you!":"Teşekkürler!",
+
+/* Footer and dialogs */
+"Explore":"Keşfedin",
+"Gatherings":"Buluşmalar",
+"Contact & follow":"İletişim ve takip",
+"All contact channels ↗":"Tüm iletişim kanalları ↗",
+"Newsletter":"Bülten",
+"Together, around the same table.":"Birlikte, aynı masanın etrafında.",
+"Back to top ↑":"Başa dön ↑",
+"Got it":"Anladım",
+"Photo viewer":"Fotoğraf görüntüleyici",
+"Close photo":"Fotoğrafı kapat",
+"Close dialog":"Pencereyi kapat",
+
+/* Dialog contents (home-v3.js) */
+"Sign in to see your bookings, upcoming gatherings and recommendations.":"Rezervasyonlarınızı, yaklaşan buluşmaları ve önerilerinizi görmek için giriş yapın.",
+"Akademi mug":"Akademi kupası",
+"An ivory ceramic mug with the Akademi mark.":"Akademi işaretli fildişi seramik bir kupa.",
+"Akademi T-shirt":"Akademi tişörtü",
+"An ivory cotton T-shirt with the Akademi mark.":"Akademi işaretli fildişi pamuklu bir tişört.",
+"The Akademi calendar":"Akademi takvimi",
+"An illustrated calendar created for the Akademi.":"Akademi için hazırlanmış illüstrasyonlu bir takvim.",
+"Akademi notebook":"Akademi defteri",
+"A sage notebook for thoughts, sketches and reading notes.":"Düşünceler, eskizler ve okuma notları için adaçayı yeşili bir defter.",
+"Akademi tote bag":"Akademi bez çantası",
+"A natural cotton tote with the Akademi mark.":"Akademi işaretli doğal pamuklu bir bez çanta.",
+"Paint a fabric lampshade together. 7 November at 15:00, approximately three hours.":"Birlikte bir kumaş abajur boyayın. 7 Kasım, saat 15.00, yaklaşık üç saat.",
+"Read at home and meet to talk about the things a book leaves with us.":"Evde okuyun ve bir kitabın bizde bıraktıkları üzerine konuşmak için buluşun.",
+"An introduction to the traces of trauma.":"Travmanın izlerine bir giriş.",
+"Reading slowly":"Yavaş okumak",
+"Six evenings with short novels, joining the same group throughout.":"Kısa romanlarla altı akşam, baştan sona aynı grupla.",
+"Thinking with our hands":"Elimizle düşünmek",
+"A four-meeting ceramics course: getting to know the material, shaping it and making together.":"Dört buluşmalık bir seramik kursu: malzemeyi tanımak, şekillendirmek ve birlikte üretmek.",
+"About psychotherapy":"Psikoterapi hakkında",
+"An informational introduction to psychotherapy. This page does not accept appointments or payments.":"Psikoterapiye bilgilendirici bir giriş. Bu sayfa randevu veya ödeme kabul etmez.",
+"The Stranger · Albert Camus":"Yabancı · Albert Camus",
+"A book recommendation, opening up questions about belonging, alienation and the search for meaning.":"Aidiyet, yabancılaşma ve anlam arayışı üzerine sorular açan bir kitap önerisi.",
+"Eternal Sunshine of the Spotless Mind · Michel Gondry":"Sil Baştan · Michel Gondry",
+"A film recommendation: a conversation about memory, relationships and the things we choose to keep.":"Bir film önerisi: hafıza, ilişkiler ve saklamayı seçtiğimiz şeyler üzerine bir sohbet.",
+"Take time to reread a sentence, make a note and talk about what stayed with you, without needing to finish every book.":"Bir cümleyi yeniden okumak, not almak ve sizde kalanlar üzerine konuşmak için zaman ayırın; her kitabı bitirmek zorunda değilsiniz."
+}
+};
