@@ -318,4 +318,39 @@ body:has(#lightbox[open]){overflow:hidden}
   .moment-open::after{display:none}
   /* leaves: canvas spans the whole lower hero block (its top edge is the scene top minus the 60px block padding) */
   .fx{top:-60px;height:calc(var(--th)*.6667 + 60px)}
+
+  /* ===== mobile header and full-screen menu (design node 479:1391) ===== */
+  .header{backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px)}
+  .header .menu-button{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:82px;height:34px;min-height:0;margin-left:auto;padding:8px 12px;border:1px solid #7A5852;border-radius:0;background:none;color:#7A5852;font:400 12px/1 var(--sans);position:relative}
+  .header .menu-button::after{content:'';position:absolute;inset:-5px}  /* 44px tap area around the 34px button */
+  .menu-button .mb-label{line-height:1!important}
+  .menu-button .mb-close,.menu-button .mb-x{display:none}
+  .menu-button[aria-expanded="true"] .mb-menu,.menu-button[aria-expanded="true"] .mb-burger{display:none}
+  .menu-button[aria-expanded="true"] .mb-close{display:inline}
+  .menu-button[aria-expanded="true"] .mb-x{display:block}
+  .header nav{display:none;position:absolute;top:100%;left:0;right:0;margin:0;padding:0;height:calc(100svh - 88px);overflow:auto;background:var(--paper);border:0;box-shadow:none;max-height:none;font-size:inherit}
+  .header nav.open{display:flex;flex-direction:column}
+  body:has(.header nav.open){overflow:hidden}
+  .header .header-links{display:block;flex:0 0 auto;margin:0;padding:22px}
+  .header .header-links>li>a{display:block;padding:12px 0;font:400 24px/1 var(--display);line-height:1!important;color:var(--ink);white-space:normal}
+  .header .header-links>li.header-extra>a{padding:9px 0}
+  .header nav .header-tools{display:flex;position:static;justify-content:space-between;align-items:center;gap:0;height:80px;margin:auto 0 0;padding:0 22px;border:0;flex:0 0 auto}
+  .header .header-languages{gap:6px;font-size:12px}
+  .header .header-languages a{padding:10px 0;font-size:12px;line-height:20px!important}
+  .header .header-tools a.login-btn{padding:7px 16px;font-size:13px;line-height:16px!important}
+
+  /* menu opening: items fade in with a small upward shift, one after another */
+  @keyframes menu-item-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .header nav.open .header-links>li,.header nav.open .header-tools{animation:menu-item-in .45s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0)*55ms + 70ms)}
+  .header-links>li:nth-child(1){--i:0}.header-links>li:nth-child(2){--i:1}.header-links>li:nth-child(3){--i:2}.header-links>li:nth-child(4){--i:3}
+  .header-links>li:nth-child(5){--i:4}.header-links>li:nth-child(7){--i:5}.header-links>li:nth-child(8){--i:6}.header-links>li:nth-child(9){--i:7}
+  .header nav.open .header-tools{--i:8}
+  .motion-still .header nav.open .header-links>li,.motion-still .header nav.open .header-tools{animation:none}
 }
+
+/* menu button label and icon states (all widths where the button is shown) */
+.menu-button .mb-close,.menu-button .mb-x{display:none}
+.menu-button[aria-expanded="true"] .mb-menu,.menu-button[aria-expanded="true"] .mb-burger{display:none}
+.menu-button[aria-expanded="true"] .mb-close{display:inline}
+.menu-button[aria-expanded="true"] .mb-x{display:block}
+.menu-button .mb-icon{flex:none}

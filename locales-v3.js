@@ -23,6 +23,7 @@ tr:{
 /* Header */
 "Skip to content":"İçeriğe geç",
 "Menu":"Menü",
+"Close":"Kapat",
 "Calendar":"Takvim",
 "Groups & workshops":"Gruplar ve atölyeler",
 "Courses":"Kurslar",
