@@ -210,3 +210,110 @@ body:has(#lightbox[open]){overflow:hidden}
 .header-links>li>a,.header-more summary{font-size:.8125rem}
 .header-tools{font-size:.75rem}
 .header-tools a.login-btn{font-size:.8125rem}
+
+/* parallax: how far the tree travels under the text (share of its own height); desktop = 20% */
+.scene{--shift-ratio:.2}
+
+/* ===== v4 mobile: aligned with the Figma mobile layout (node 460:2) =====
+   Sizes, spacing, hidden descriptions, horizontal scrollers, hero scene and the staggered gallery follow the design. */
+@media(max-width:700px){
+  /* type scale */
+  h1,.hero h1{font-size:36px;line-height:1.1;letter-spacing:-.86px}
+  h2{font-size:32px;line-height:1;letter-spacing:-.63px}
+  h3,.event-copy h3,.course h3,.ways h3,.recommendations h3,.product h3{font-size:24px;line-height:1.1}
+  .hero-intro{font-size:20px;max-width:none;margin:20px 0 0}
+  .quote{font-size:20px;line-height:1.2;margin-top:16px}
+  .body-large{font-size:13px;margin:16px 0 0}
+  .about .muted{margin:16px 0 0}
+  .about .text-link{margin-top:8px}
+  .eyebrow,.course-meta span{font-size:9px;font-weight:600;letter-spacing:1.98px}
+  .newsletter h2{font-size:32px;margin:20px 0 16px}
+  .footer-wordmark{font-size:32px;line-height:1.2;letter-spacing:-1.12px;margin:24px 0 0}
+  main :is(p,a,span,label,button,summary,li),footer :is(p,a,span,label,button,li),.header :is(a,button,summary,span){line-height:1.366!important}
+  .hero-intro,.quote{line-height:1.2!important}
+  .footer-wordmark{line-height:1.2!important}
+  .social-row a{line-height:1.1!important}
+
+  /* vertical rhythm */
+  .section,.shop-section,.therapy-section{padding-block:40px}
+  .section>.eyebrow,.wrap>.eyebrow{margin-bottom:20px}
+  .section-heading{margin-bottom:40px}
+  .section-heading>.short-copy,.section-heading>.text-link{margin-top:8px}
+
+  /* hero: bigger tree, seats directly below its trunk, text block with 80px air */
+  .hero{overflow-x:clip}
+  .hero-copy{padding:60px 20px;min-height:50svh;display:flex;flex-direction:column;justify-content:center}
+  .hero-copy .eyebrow{margin-bottom:12px}
+  .button{gap:12px;padding:12px 18px}
+  .scene-scroll{padding:60px 0;margin-top:0}
+  /* final composition = design node 460:28: seats overlap the tree base; the tree ends tucked 30% of its height under the text */
+  .scene{--tw:181.6vw;--shift-ratio:.3;height:calc(var(--th)*.372 + var(--tw)*.727*821/1915);width:100%;margin-left:0}
+  .seats{width:calc(var(--tw)*.727);left:50%;margin-left:calc(var(--tw)*-.3635);top:calc(var(--th)*.372);bottom:auto}
+  .scene-scroll{clip-path:inset(-100vh -100vw calc(181.6vw*-.1 - var(--tree-extra,0px)) -100vw)}
+
+  /* events: date | photo over copy; no round link, no description */
+  .event{grid-template-columns:55px 1fr;gap:8px;padding:12px 0;align-items:start}
+  .event .date{grid-column:1;grid-row:1}
+  .event>img{grid-column:2;grid-row:1;width:100%;aspect-ratio:268/168}
+  .event-copy{grid-column:2;grid-row:2}
+  .event .round-link,.event-copy>p:not(.eyebrow){display:none}
+  .event-copy h3{margin-top:4px}
+  .tags{margin-top:12px}
+
+  /* ways to join rows */
+  .ways>a{padding:12px 0;gap:4px 12px}
+
+  /* courses, shop, recommendations: horizontal scrollers */
+  .course-grid,.product-grid,.recommendations{display:flex;gap:40px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);margin-inline:calc(var(--gutter)*-1);padding-inline:var(--gutter);scrollbar-width:none}
+  .course-grid::-webkit-scrollbar,.product-grid::-webkit-scrollbar,.recommendations::-webkit-scrollbar{display:none}
+  .course,.product,.recommendations article{scroll-snap-align:start;flex:0 0 300px}
+  .product-grid{gap:22px}
+  .product{flex-basis:150px}
+  .course .image-button img,.recommendations img{aspect-ratio:300/220;width:100%;height:auto;max-height:none}
+  .course-meta{margin:12px 0 8px}
+  .card-bottom{margin-top:12px}
+  .product p,.recommendations article>p:not(.eyebrow){display:none}
+  .product h3{margin-top:12px}
+  .product .text-link{margin-top:12px}
+  .recommendations img{margin-bottom:12px}
+  .recommendations h3{margin-top:4px}
+  .recommendations .text-link{margin-top:12px}
+
+  /* gallery: the staggered composition from the design (331 x 532) */
+  .moments{display:block;position:relative;height:532px;gap:0}
+  .moments figure{position:absolute;margin:0;max-width:none}
+  .moments .moment-open,.moments figure img{width:100%;height:100%;aspect-ratio:auto;display:block}
+  .moments .moment-one{left:-22px;top:20px;width:158px;height:200px}
+  .moments .moment-two{left:152px;top:0;width:180px;height:180px}
+  .moments .moment-three{left:195px;top:194px;width:158px;height:200px}
+  .moments .moment-four{left:0;top:236px;width:180px;height:180px}
+  .moments .moment-five{left:86px;top:432px;width:160px;height:100px}
+
+  /* about, psychotherapy */
+  .split{gap:12px}
+  .about-image{aspect-ratio:1/1}
+  .therapy{gap:12px}
+  .therapy img{width:200px;margin-left:auto;max-height:none;aspect-ratio:200/121}
+
+  /* follow rows */
+  .social-row{gap:0}
+  .social-row a{font-size:24px;padding:12px 0}
+
+  /* footer */
+  footer{padding:40px 0}
+  .footer-top{grid-template-columns:1fr 1fr;gap:24px 40px}
+  .footer-brand{grid-column:1/-1}
+  .footer-brand img{max-width:150px}
+  .footer-top>p{display:none}
+  .footer-bottom{flex-direction:row;justify-content:flex-start;gap:10px;margin-top:32px;padding-top:20px}
+  /* section details measured against the design */
+  #courses h2 br{display:none}
+  .about .muted{display:none}
+  .newsletter{gap:10px}
+  .newsletter form>label{margin:0}
+  .email-row{margin:12px 0 0}
+  .checkbox{margin:12px 0 0}
+  /* gallery: no captions on the photos; the text appears only in the full-screen viewer */
+  .moments figure figcaption.moment-caption{display:none}
+  .moment-open::after{display:none}
+}

@@ -46,18 +46,56 @@
       if(e>=1)f.ty=0;
     });
   }
+  // Mobile hero: the text block is 50% of the (small) viewport height and the crown first shows from 75% of it.
+  // The tree starts lower by `treeExtra` and ends in the same composition; `treeSpare` adds the extra air that the taller
+  // text block gets below its buttons, so the crown still tucks under them. Recomputed on width change, load and font load.
+  const heroMobile=matchMedia('(max-width:700px)');
+  let treeExtra=0,treeSpare=0,sceneTopDoc=0,extraWidth=-1;
+  function smallViewportHeight(){
+    const p=document.createElement('div');
+    p.style.cssText='position:fixed;left:0;top:0;width:0;height:100svh;visibility:hidden;pointer-events:none';
+    document.body.appendChild(p);const h=p.offsetHeight;p.remove();
+    return h||window.innerHeight;
+  }
+  function measureExtra(force){
+    if(!force&&window.innerWidth===extraWidth)return;
+    extraWidth=window.innerWidth;
+    treeExtra=0;treeSpare=0;
+    if(heroMobile.matches){
+      const copy=document.querySelector('.hero-copy'),kids=[...copy.children];
+      const contentH=kids[kids.length-1].getBoundingClientRect().bottom-kids[0].getBoundingClientRect().top;
+      treeSpare=Math.max(0,(copy.offsetHeight-contentH)/2-60);
+      sceneTopDoc=scene.getBoundingClientRect().top+window.scrollY;
+      const copyBottom=copy.getBoundingClientRect().bottom+window.scrollY;
+      // crown first shows from 70% of the screen height, but never starts above the text block
+      treeExtra=Math.max(copyBottom+10-sceneTopDoc,.70*smallViewportHeight()-sceneTopDoc);
+    }
+    const wrap=scene.closest('.scene-scroll');if(wrap)wrap.style.setProperty('--tree-extra',Math.max(0,treeExtra)+'px');
+  }
+  window.addEventListener('load',()=>{measureExtra(true);requestDraw();});
+  if(document.fonts)document.fonts.ready.then(()=>{measureExtra(true);requestDraw();});
   function draw(){
     queued=false;
     flyIn();
     if(still()){['transform'].forEach(k=>{tree.style.removeProperty(k);seats.style.removeProperty(k);});return;}
     const range=Math.max(260,window.innerHeight*.7);
     const p=clamp(window.scrollY/range);
-    const shift=Math.max(0,tree.offsetHeight-scene.offsetHeight);
-    const treeTf=`translate3d(0,${-shift*ease(p)}px,0)`;put(tree,'transform',treeTf);
-    // Seats slide up from below, later than the tree (they start after ~22% of the range) and settle at p=1.
+    const ratio=parseFloat(getComputedStyle(scene).getPropertyValue('--shift-ratio'));const shift=ratio?tree.offsetHeight*ratio:Math.max(0,tree.offsetHeight-scene.offsetHeight);
+    measureExtra();
+    const e=ease(p);
+    const treeY=treeExtra*(1-e)-(shift+treeSpare)*e;
+    put(tree,'transform',`translate3d(0,${treeY}px,0)`);
+    // Seats slide up from below and settle. Desktop: at the end of the scroll range. Mobile: exactly when the centre of the tree
+    // reaches the centre of the screen (progress follows the tree's own position, so it holds on every phone height).
     const seatH=seats.offsetHeight;
-    const sp=ease((p-.22)/.78);
-    put(seats,'transform',`translate3d(0,${(1-sp)*seatH*1.2}px,0)`);
+    let sp;
+    if(heroMobile.matches){
+      const half=tree.offsetHeight/2,c0=sceneTopDoc+treeExtra+half,c=sceneTopDoc-window.scrollY+treeY+half;
+      sp=ease((c0-c)/Math.max(1,c0-window.innerHeight/2));
+    }else sp=ease((p-.22)/.78);
+    // Mobile: once settled the seats stay glued to the tree (they follow its remaining travel); desktop keeps the fixed end position.
+    const seatsY=heroMobile.matches?(1-sp)*seatH*1.2+sp*(treeY+shift):(1-sp)*seatH*1.2-treeSpare*sp;
+    put(seats,'transform',`translate3d(0,${seatsY}px,0)`);
   }
   function requestDraw(){if(!queued){queued=true;requestAnimationFrame(draw);}}
   window.addEventListener('scroll',requestDraw,{passive:true});
