@@ -1,5 +1,5 @@
 /*
-  Hero effects for home-v4.html: drifting, falling leaves on two canvases
+  Hero effects for index.html (v4): drifting, falling leaves on two canvases
   (one behind the tree, one in front of the seats).
   Everything scales with the width of the scene so it stays proportional on any screen.
   Motion is on by default; add ?motion=system to honour the OS "reduce motion" setting.
