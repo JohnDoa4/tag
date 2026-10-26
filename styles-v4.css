@@ -411,3 +411,19 @@ img.arrow{width:1rem!important;height:1rem!important;max-width:none!important;ma
 #moments{position:relative;isolation:isolate;overflow:clip}
 #moments::before{content:'';position:absolute;z-index:-1;pointer-events:none;background:url(assets-v3/botanical-branch-v1.jpg) center/100% 100% no-repeat;left:6.4583%;width:87.0833%;aspect-ratio:1;bottom:0}
 @media(max-width:700px){#moments::before{left:-25.6%;width:207.7%}}
+/* Shop as an inset: torn paper edges above and below the tinted block */
+#shop{position:relative}
+#shop::before,#shop::after{content:'';position:absolute;left:0;right:0;aspect-ratio:1440/70;background-repeat:no-repeat;background-size:100% 100%;pointer-events:none;z-index:1}
+#shop::before{top:0;background-image:url(assets-v3/paper-1.png)}
+#shop::after{bottom:0;background-image:url(assets-v3/paper-2.png)}
+@media(max-width:700px){#shop::before,#shop::after{height:35px;background-size:auto 100%;background-position:center}}
+/* Psychotherapy block: warm tint, room before the link */
+#psychotherapy{background:#F3E9E2}
+.therapy .text-link{margin-top:1.125rem}
+@media(max-width:700px){.therapy .text-link{margin-top:16px}}
+#shop{overflow:clip}
+#shop::before,#shop::after{width:100%;max-width:100%}
+/* shop: +40px of padding top and bottom (the torn edges eat the old one) */
+#shop.shop-section{padding-block:calc(5rem + 40px)}
+@media(max-width:1120px){#shop.shop-section{padding-block:calc(3.125rem + 40px)}}
+@media(max-width:700px){#shop.shop-section{padding-block:80px}}
