@@ -174,6 +174,7 @@ tr:{
 "“Space to think together.":"“Birlikte düşünmek için alan.",
 "Room to hear each other.”":"Birbirimizi duymak için yer.”",
 "Terapi Gibi Akademi is a meeting place at the intersection of psychology, art and human experience. We read, make things and leave room for a shared search for meaning.":"Terapi Gibi Akademi; psikoloji, sanat ve insan deneyiminin kesiştiği bir buluşma yeri. Birlikte okuyor, üretiyor ve ortak bir anlam arayışına yer açıyoruz.",
+"Terapi Gibi Akademi is a meeting place at the intersection of psychology, art and human experience. We read, make things and leave room for a shared search for meaning. We meet in person at the cafés and art galleries we work with in Istanbul.":"Terapi Gibi Akademi; psikoloji, sanat ve insan deneyiminin kesiştiği bir buluşma yeri. Birlikte okuyor, üretiyor ve ortak bir anlam arayışına yer açıyoruz. İstanbul’da iş birliği yaptığımız kafe ve sanat galerilerinde yüz yüze buluşuyoruz.",
 "We meet in person at the cafés and art galleries we work with in Istanbul.":"İstanbul’da iş birliği yaptığımız kafe ve sanat galerilerinde yüz yüze buluşuyoruz.",
 "Let’s meet ↗":"Tanışalım ↗",
 "Participants with their decorated plates at a workshop":"Bir atölyede süsledikleri tabaklarla katılımcılar",
