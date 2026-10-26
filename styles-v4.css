@@ -405,3 +405,5 @@ img.arrow{width:1rem!important;height:1rem!important;max-width:none!important;ma
 /* one style for all section lead texts: 16px, #1F3026 (web and mobile) */
 .section-heading>.short-copy,.short-copy,.body-large,.newsletter>div>p:not(.eyebrow){font-size:1rem!important;line-height:1.7!important;color:#1F3026!important}
 @media(max-width:700px){.section-heading>.short-copy,.short-copy,.body-large,.newsletter>div>p:not(.eyebrow){font-size:16px!important}}
+.footer-bottom{flex-direction:row;justify-content:space-between;align-items:baseline}
+.footer-bottom a{margin-left:auto;text-align:right}
