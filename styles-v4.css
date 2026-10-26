@@ -407,3 +407,7 @@ img.arrow{width:1rem!important;height:1rem!important;max-width:none!important;ma
 @media(max-width:700px){.section-heading>.short-copy,.short-copy,.body-large,.newsletter>div>p:not(.eyebrow){font-size:16px!important}}
 .footer-bottom{flex-direction:row;justify-content:space-between;align-items:baseline}
 .footer-bottom a{margin-left:auto;text-align:right}
+/* "The many ways of being together": botanical branch behind the photos (Figma 450:352 web, 460:252 mobile) */
+#moments{position:relative;isolation:isolate;overflow:clip}
+#moments::before{content:'';position:absolute;z-index:-1;pointer-events:none;background:url(assets-v3/botanical-branch-v1.jpg) center/100% 100% no-repeat;left:6.4583%;width:87.0833%;aspect-ratio:1;bottom:0}
+@media(max-width:700px){#moments::before{left:-25.6%;width:207.7%}}
