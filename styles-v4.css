@@ -280,14 +280,14 @@ body:has(#lightbox[open]){overflow:hidden}
   .recommendations .text-link{margin-top:12px}
 
   /* gallery: the staggered composition from the design (331 x 532) */
-  .moments{display:block;position:relative;height:532px;gap:0}
+  .moments{display:block;position:relative;height:552px;gap:0}
   .moments figure{position:absolute;margin:0;max-width:none}
   .moments .moment-open,.moments figure img{width:100%;height:100%;aspect-ratio:auto;display:block}
   .moments .moment-one{left:-22px;top:20px;width:158px;height:200px}
   .moments .moment-two{left:152px;top:0;width:180px;height:180px}
   .moments .moment-three{left:195px;top:194px;width:158px;height:200px}
   .moments .moment-four{left:0;top:236px;width:180px;height:180px}
-  .moments .moment-five{left:86px;top:432px;width:160px;height:100px}
+  .moments .moment-five{left:86px;top:452px;width:160px;height:100px}
 
   /* about, psychotherapy */
   .split{gap:12px}
@@ -332,8 +332,8 @@ body:has(#lightbox[open]){overflow:hidden}
   .header nav.open{display:flex;flex-direction:column}
   body:has(.header nav.open){overflow:hidden}
   .header .header-links{display:block;flex:0 0 auto;margin:0;padding:22px}
-  .header .header-links>li>a{display:block;padding:12px 0;font:400 24px/1 var(--display);line-height:1!important;color:var(--ink);white-space:normal}
-  .header .header-links>li.header-extra>a{padding:9px 0}
+  .header .header-links>li>a{display:block;padding:8px 0;font:400 32px/1 var(--display);line-height:1!important;color:var(--ink);white-space:normal}
+  .header .header-links>li.header-extra>a{padding:6px 0}
   .header nav .header-tools{display:flex;position:static;justify-content:space-between;align-items:center;gap:0;height:80px;margin:auto 0 0;padding:0 22px;border:0;flex:0 0 auto}
   .header .header-languages{gap:6px;font-size:12px}
   .header .header-languages a{padding:10px 0;font-size:12px;line-height:20px!important}
@@ -385,3 +385,20 @@ h3,.event-copy h3,.course h3,.ways h3,.recommendations h3,.product h3,.hero-intr
 .hero-copy .eyebrow{font-size:.75rem;font-weight:600}
 @media(max-width:700px){.hero-copy .eyebrow{font-size:12px;letter-spacing:.16em}}
 @media(max-width:700px){h1,h2,h3,.hero-intro,.quote,.date strong,.roman,.footer-top>p,.footer-wordmark,.social-row a,.moments figcaption,.moments figure figcaption.moment-caption,.lightbox-figure figcaption,.event-copy h3,.course h3,.ways h3,.recommendations h3,.product h3,.newsletter h2,dialog h2{font-weight:370!important}}
+
+/* social icons before the names */
+.social-icon{width:.85em;height:.85em;flex:none;margin-right:-.2em}
+
+/* arrow icon (replaces the ↗ glyph) */
+.arrow{width:1rem;height:1rem;display:inline-block;flex:none;vertical-align:-.2em;margin-left:.25rem}
+.round-link .arrow,.email-row button .arrow,.social-row b .arrow,.ways a>span .arrow{margin:0;vertical-align:middle}
+.social-row b{display:flex;align-items:center}
+.round-link{display:grid;place-items:center;padding:0}
+.round-link .arrow{display:block}
+.ways a>span:last-child{display:flex;justify-content:flex-end;align-items:center}
+.email-row button{display:flex;align-items:center;justify-content:center}
+/* arrow icon: keep it a 16px inline icon, whatever the image rules of its section say */
+img.arrow{width:1rem!important;height:1rem!important;max-width:none!important;max-height:none!important;aspect-ratio:1!important;margin-bottom:0!important;object-fit:contain!important;object-view-box:none!important;mix-blend-mode:normal!important;filter:none!important;display:inline-block!important;vertical-align:-.2em}
+.round-link img.arrow{display:block!important}
+.round-link img.arrow,.email-row button img.arrow,.social-row b img.arrow,.ways a>span img.arrow{vertical-align:middle;margin:0!important}
+@media(max-width:700px){#newsletter-form .email-row+.checkbox{margin-top:12px}}
