@@ -79,8 +79,7 @@ tr:{
 /* Ways to join */
 "Ways to join":"Katılım yolları",
 "Bring your curiosity.":"Merakınızı getirin.",
-"An evening, a book, or a fresh beginning.":"Bir akşam, bir kitap ya da yeni bir başlangıç.",
-"Find a way that feels right for you.":"Size iyi gelen yolu bulun.",
+"An evening, a book, or a fresh beginning. Find a way that feels right for you.":"Bir akşam, bir kitap ya da yeni bir başlangıç. Size iyi gelen yolu bulun.",
 "Reading groups":"Okuma kulüpleri",
 "Read at home, meet around one table. Talk about the things a book leaves with us.":"Evde okuyun, tek bir masanın etrafında buluşun. Bir kitabın bizde bıraktıkları üzerine konuşun.",
 "Workshops":"Atölyeler",
@@ -93,8 +92,7 @@ tr:{
 "Learning together":"Birlikte öğrenmek",
 "More than":"Bir akşamdan",
 "one evening.":"fazlası.",
-"A shared experience that unfolds over time.":"Zamanla açılan ortak bir deneyim.",
-"Join a course as a complete series.":"Kursa tam bir seri olarak katılın.",
+"A shared experience that unfolds over time. Join a course as a complete series.":"Zamanla açılan ortak bir deneyim. Kursa tam bir seri olarak katılın.",
 "6 MEETINGS":"6 BULUŞMA",
 "Reading course":"Okuma kursu",
 "03 December":"3 Aralık",
@@ -116,8 +114,7 @@ tr:{
 /* Shop */
 "A little Akademi.":"Küçük bir Akademi.",
 "Every day.":"Her gün.",
-"Objects to read with, write in and take along.":"Birlikte okuyacağınız, içine yazacağınız ve yanınızda taşıyacağınız nesneler.",
-"A first look at our branded collection.":"Markalı koleksiyonumuza ilk bakış.",
+"Objects to read with, write in and take along. A first look at our branded collection.":"Birlikte okuyacağınız, içine yazacağınız ve yanınızda taşıyacağınız nesneler. Markalı koleksiyonumuza ilk bakış.",
 "Mug":"Kupa",
 "A small pause, a warm cup.":"Küçük bir mola, sıcak bir fincan.",
 "View product":"Ürünü görün",
@@ -142,8 +139,7 @@ tr:{
 /* Around the table */
 "Around the table":"Masanın etrafında",
 "The many ways of being together.":"Birlikte olmanın pek çok yolu.",
-"Sometimes a sentence. Sometimes paint on our hands.":"Bazen bir cümle. Bazen ellerimizde boya.",
-"Sometimes simply being in the same place.":"Bazen sadece aynı yerde olmak.",
+"Sometimes a sentence. Sometimes paint on our hands. Sometimes simply being in the same place.":"Bazen bir cümle. Bazen ellerimizde boya. Bazen sadece aynı yerde olmak.",
 "A little anticipation.":"Biraz heyecan.",
 "Between the pages.":"Sayfaların arasında.",
 "Something of our own.":"Kendimize ait bir şey.",
@@ -163,8 +159,7 @@ tr:{
 /* Follow */
 "Keep the conversation going":"Sohbet sürsün",
 "Find us in between.":"Bizi aralarda bulun.",
-"Books, small ideas, and moments between gatherings.":"Kitaplar, küçük fikirler ve buluşmalar arasındaki anlar.",
-"Follow along at your own pace.":"Kendi hızınızda takip edin.",
+"Books, small ideas, and moments between gatherings. Follow along at your own pace.":"Kitaplar, küçük fikirler ve buluşmalar arasındaki anlar. Kendi hızınızda takip edin.",
 
 /* About */
 "READ · THINK · MAKE":"OKU · DÜŞÜN · ÜRET",

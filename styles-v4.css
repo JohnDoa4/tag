@@ -402,3 +402,6 @@ img.arrow{width:1rem!important;height:1rem!important;max-width:none!important;ma
 .round-link img.arrow{display:block!important}
 .round-link img.arrow,.email-row button img.arrow,.social-row b img.arrow,.ways a>span img.arrow{vertical-align:middle;margin:0!important}
 @media(max-width:700px){#newsletter-form .email-row+.checkbox{margin-top:12px}}
+/* one style for all section lead texts: 16px, #1F3026 (web and mobile) */
+.section-heading>.short-copy,.short-copy,.body-large,.newsletter>div>p:not(.eyebrow){font-size:1rem!important;line-height:1.7!important;color:#1F3026!important}
+@media(max-width:700px){.section-heading>.short-copy,.short-copy,.body-large,.newsletter>div>p:not(.eyebrow){font-size:16px!important}}
