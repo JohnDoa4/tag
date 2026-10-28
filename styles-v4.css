@@ -427,3 +427,12 @@ img.arrow{width:1rem!important;height:1rem!important;max-width:none!important;ma
 #shop.shop-section{padding-block:calc(5rem + 40px)}
 @media(max-width:1120px){#shop.shop-section{padding-block:calc(3.125rem + 40px)}}
 @media(max-width:700px){#shop.shop-section{padding-block:80px}}
+/* event date: month 12 bold on its own line, then day · time 12 regular */
+.date span{font-size:.75rem!important;font-weight:400;letter-spacing:.08em;line-height:1.4;white-space:nowrap}
+.date span b{display:block;font-weight:700}
+/* desktop header menu: 16px semibold */
+@media(min-width:701px){.header-links>li>a,.header-more summary{font-size:1rem;font-weight:600}}
+/* event date as in Figma 450:98: day, month and day · time centred under each other, no gaps */
+.event .date{display:flex;flex-direction:column;align-items:center;width:max-content;justify-self:start;text-align:center}
+.date strong{line-height:1!important}
+.date span{margin-top:0!important;letter-spacing:0!important;line-height:normal!important}
