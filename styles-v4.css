@@ -447,3 +447,8 @@ img.arrow{width:1rem!important;height:1rem!important;max-width:none!important;ma
 .social-row a>.social-icon,.social-row a>b{transform:translateY(-.11em)}
 @media(min-width:701px){.social-row a>.social-icon{width:3.125rem;height:3.125rem;margin-right:0}}
 @media(max-width:700px){.social-row a>.social-icon{width:32px;height:32px;margin-right:0}}
+/* logo2.png (1480x512, wider than the old 2263x1024): keep the old visual height, let the width follow the proportions */
+.header .brand{width:auto;flex-shrink:0}
+.header .brand img{width:auto;height:4.8125rem;max-width:none;object-fit:contain}
+.footer-brand img{width:auto;max-width:none;height:5.375rem}
+@media(max-width:700px){.header .brand{width:auto}.header .brand img{height:66px}.footer-brand img{max-width:none;height:68px}}
