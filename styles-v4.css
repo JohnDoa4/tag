@@ -24,15 +24,10 @@ h1{letter-spacing:-.02em}
 h2{letter-spacing:-.015em}
 /* Remove decorative numbering while retaining the event dates. */
 .ways>a{grid-template-columns:1fr 1fr 1.875rem}
-/* Five physical product categories; real logo layered over concept photography. */
+/* Five physical product categories; the logo is drawn into each photo, which fills a fixed 4:5 frame. */
 .product-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.375rem}
-.product-image{position:relative;display:block;width:100%;padding:0;border:0;background:#e9eee4;overflow:hidden}
-.product-photo{width:100%;aspect-ratio:4/5;object-fit:cover}
-.product-mark{position:absolute;width:34%;height:auto;left:33%;top:49%;mix-blend-mode:multiply;pointer-events:none}
-.product-tshirt .product-mark{width:27%;left:36.5%;top:34%}
-.product-notebook .product-mark{width:33%;left:33.5%;top:41%}
-.product-tote .product-mark{width:38%;left:31%;top:53%}
-.product-calendar .product-photo{object-fit:contain;mix-blend-mode:multiply}
+.product-image{position:relative;display:block;width:100%;aspect-ratio:4/5;padding:0;border:0;background:#e9eee4;overflow:hidden}
+.product-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .product h3{font-size:1.875rem;margin:1.1875rem 0 0.5rem}
 .product>p{font-size:0.6875rem;color:var(--muted);min-height:2.375rem;margin-bottom:1rem}
 .collection-note{font-size:0.625rem;color:var(--muted);margin-top:1.875rem;max-width:42.5rem}
@@ -65,7 +60,7 @@ h2{letter-spacing:-.015em}
  .moments-mosaic .moment-five{grid-column:1/-1;margin-top:0}
 }
 
-.product-notebook .product-mark{transform:rotate(-4deg)}
+
 
 /* Three scroll phases: tree passes behind copy, chairs settle, whole stage releases. */
 .hero{position:relative;isolation:isolate}
@@ -452,3 +447,12 @@ img.arrow{width:1rem!important;height:1rem!important;max-width:none!important;ma
 .header .brand img{width:auto;height:4.8125rem;max-width:none;object-fit:contain}
 .footer-brand img{width:auto;max-width:none;height:5.375rem}
 @media(max-width:700px){.header .brand{width:auto}.header .brand img{height:66px}.footer-brand img{max-width:none;height:68px}}
+
+/* arrows: white arrow on the green fill on hover (event links and the photo viewer) */
+@media(hover:hover){.round-link:hover img.arrow{filter:brightness(0) invert(1)!important}}
+/* photo viewer: previous / next, vertically centred on both sides */
+.lightbox-nav{position:absolute;top:50%;z-index:2;transform:translateY(-50%);border-color:var(--ink);cursor:pointer}
+.lightbox-prev{left:1.5rem}
+.lightbox-next{right:1.5rem}
+.lightbox-prev img.arrow{transform:scaleX(-1)}
+@media(max-width:700px){.lightbox-nav{top:auto;bottom:.75rem;transform:none;width:2.5rem;height:2.5rem}.lightbox-prev{left:1rem}.lightbox-next{right:1rem}}

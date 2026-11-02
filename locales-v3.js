@@ -224,6 +224,8 @@ tr:{
 "Got it":"Anladım",
 "Photo viewer":"Fotoğraf görüntüleyici",
 "Close photo":"Fotoğrafı kapat",
+"Previous photo":"Önceki fotoğraf",
+"Next photo":"Sonraki fotoğraf",
 "Close dialog":"Pencereyi kapat",
 
 /* Dialog contents (home-v3.js) */

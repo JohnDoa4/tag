@@ -105,18 +105,34 @@
   if(document.fonts)document.fonts.ready.then(requestDraw);
   draw();
   // Seminar photo viewer: quick soft zoom from the thumbnail to full screen.
-  const lb=document.querySelector('#lightbox'),lbImg=lb.querySelector('img'),lbCap=lb.querySelector('figcaption');
+  const lb=document.querySelector('#lightbox'),lbImg=lb.querySelector('.lightbox-figure img'),lbCap=lb.querySelector('figcaption');
   let lbSource=null,lbClosing=false;
   const fitDelta=(from,to)=>({x:from.left+from.width/2-(to.left+to.width/2),y:from.top+from.height/2-(to.top+to.height/2),s:from.width/to.width});
-  document.querySelectorAll('.moment-open').forEach(btn=>btn.addEventListener('click',()=>{
-    const src=btn.querySelector('img');lbSource=src;lbImg.src=src.currentSrc||src.src;lbImg.alt=src.alt;
+  const momentBtns=[...document.querySelectorAll('.moment-open')];let lbIndex=0;
+  const lbSet=i=>{
+    const btn=momentBtns[i],src=btn.querySelector('img');lbIndex=i;lbSource=src;lbImg.src=src.currentSrc||src.src;lbImg.alt=src.alt;
     lbCap.textContent=btn.parentElement.querySelector('figcaption').textContent;
+  };
+  momentBtns.forEach((btn,i)=>btn.addEventListener('click',()=>{
+    lbSet(i);
     lb.showModal();lbClosing=false;
     if(still())return;
-    const to=lbImg.getBoundingClientRect(),d=fitDelta(src.getBoundingClientRect(),to);
+    const src=lbSource,to=lbImg.getBoundingClientRect(),d=fitDelta(src.getBoundingClientRect(),to);
     lb.animate([{opacity:0},{opacity:1}],{duration:240,easing:'ease-out'});
     lbImg.animate([{transform:`translate(${d.x}px,${d.y}px) scale(${d.s})`},{transform:'none'}],{duration:340,easing:'cubic-bezier(.2,.75,.2,1)'});
   }));
+  // Previous / next photo, looping through the whole set.
+  function stepViewer(dir){
+    if(lbClosing||!lb.open)return;
+    lbSet((lbIndex+dir+momentBtns.length)%momentBtns.length);
+    if(!still())lbImg.animate([{opacity:0},{opacity:1}],{duration:220,easing:'ease-out'});
+  }
+  lb.querySelector('.lightbox-prev').addEventListener('click',()=>stepViewer(-1));
+  lb.querySelector('.lightbox-next').addEventListener('click',()=>stepViewer(1));
+  lb.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();stepViewer(-1);}else if(e.key==='ArrowRight'){e.preventDefault();stepViewer(1);}});
+  let swipeX=null;
+  lb.addEventListener('touchstart',e=>{swipeX=e.touches.length===1?e.touches[0].clientX:null;},{passive:true});
+  lb.addEventListener('touchend',e=>{if(swipeX===null)return;const dx=e.changedTouches[0].clientX-swipeX;swipeX=null;if(Math.abs(dx)>50)stepViewer(dx<0?1:-1);});
   function closeViewer(){
     if(lbClosing||!lb.open)return;lbClosing=true;
     if(still()||!lbSource){lb.close();return;}
