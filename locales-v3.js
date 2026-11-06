@@ -188,8 +188,7 @@ tr:{
 
 /* Recommendations */
 "Things we take with us":"Yanımıza aldıklarımız",
-"Read, watch,":"Okuyun, izleyin,",
-"think a little further.":"biraz daha ileri düşünün.",
+"Read, watch, think a little further.":"Okuyun, izleyin, biraz daha ileri düşünün.",
 "Book":"Kitap",
 "The Stranger":"Yabancı",
 "Albert Camus · Questions to take to a reading group.":"Albert Camus · Okuma kulübüne taşınacak sorular.",
