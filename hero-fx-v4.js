@@ -22,7 +22,7 @@
   function makeLayer(canvas,isFront){
     const ctx=canvas.getContext('2d');
     const layer={canvas,ctx,w:0,h:0,s:1,items:[],isFront};
-    const count=isFront?{leaf:7}:{leaf:15};
+    const count=isFront?{leaf:11}:{leaf:22};
     layer.spawn=(it,anywhere)=>{
       it.x=anywhere?rand(0,layer.w):rand(-.08,-.01)*layer.w;
       it.y=layer.yMin+rand(0,1)*(layer.yMax-layer.yMin);

@@ -456,3 +456,34 @@ img.arrow{width:1rem!important;height:1rem!important;max-width:none!important;ma
 .lightbox-next{right:1.5rem}
 .lightbox-prev img.arrow{transform:scaleX(-1)}
 @media(max-width:700px){.lightbox-nav{top:auto;bottom:.75rem;transform:none;width:2.5rem;height:2.5rem}.lightbox-prev{left:1rem}.lightbox-next{right:1rem}}
+
+/* footer legal links */
+.footer-bottom .legal-links{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-inline:auto}
+.footer-bottom .legal-links a{margin:0;text-align:start}
+@media(max-width:700px){.footer-bottom{flex-wrap:wrap}.footer-bottom .legal-links{margin-inline:0;width:100%;order:3}}
+/* Hero scene, web: hero-tree2.jpg (1440x1104) and hero-seats2.png (1440x409) share one width (the full page width).
+   In the final parallax position the seats' top edge sits 568/1104 of the tree height below the tree's top edge (Figma "parallax" frame).
+   Sizes derive from the container width (cqw), so the composition keeps its proportions at any screen width. Mobile keeps its own images and rules. */
+@media(min-width:701px){
+  .hero-stage{container-type:inline-size}
+  .hero-stage,.scene{--tw:100cqw;--th:calc(var(--tw)*1104/1440);--shift-ratio:.17}
+  .scene{width:100%;height:calc(var(--th)*(1 - var(--shift-ratio)))}
+  .scene-scroll{padding-bottom:calc(var(--th)*.075);clip-path:inset(-100vh -100vw calc(var(--th)*-.1333) -100vw)}
+  .tree{left:0;margin-left:0;width:100%;height:var(--th);object-fit:fill}
+  .seats{left:0;margin-left:0;width:100%;height:auto;top:calc(var(--th)*(568/1104 - var(--shift-ratio)));bottom:auto}
+  .motion-still .tree{transform:translate3d(0,calc(var(--th)*var(--shift-ratio)*-1),0)!important}
+}
+/* gap between the hero scene and "Coming together" halved on the web (follows the shorter seats travel): scene bottom padding and calendar top padding */
+@media(min-width:701px){
+  .scene-scroll{padding-bottom:calc(var(--th)*.0375)}
+  #calendar{padding-top:3.125rem}
+}
+@media(min-width:701px) and (max-width:1050px){#calendar{padding-top:2.34375rem}}
+/* Hero scene, mobile: same two images (hero-tree2.jpg / hero-seats2.png, one width) and the same final relation as on the web:
+   seats' top edge 568/1104 of the tree height below the tree's top edge. Tree width 150vw (crown crops at the screen edges). */
+@media(max-width:700px){
+  .scene{--tw:150vw;--th:calc(var(--tw)*1104/1440);--shift-ratio:.3;height:calc(var(--th)*(1 - var(--shift-ratio)));width:100%;margin-left:0}
+  .seats{width:var(--tw);left:50%;margin-left:calc(var(--tw)/-2);height:auto;top:calc(var(--th)*(568/1104 - var(--shift-ratio)));bottom:auto}
+  .scene-scroll{padding:60px 0 30px;clip-path:inset(-100vh -100vw calc(150vw*-.2 - var(--tree-extra,0px)) -100vw)}
+  #calendar{padding-top:20px}
+}

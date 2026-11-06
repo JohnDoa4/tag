@@ -93,8 +93,10 @@
       const half=tree.offsetHeight/2,c0=sceneTopDoc+treeExtra+half,c=sceneTopDoc-window.scrollY+treeY+half;
       sp=ease((c0-c)/Math.max(1,c0-window.innerHeight/2));
     }else sp=ease((p-.22)/.78);
-    // Mobile: once settled the seats stay glued to the tree (they follow its remaining travel); desktop keeps the fixed end position.
-    const seatsY=heroMobile.matches?(1-sp)*seatH*1.2+sp*(treeY+shift):(1-sp)*seatH*1.2-treeSpare*sp;
+    // Desktop: the seats' travel is 0.6 of their own height (half of the former 1.2). Mobile: once settled the seats stay glued to the tree (they follow its remaining travel); desktop keeps the fixed end position.
+    // Mobile: the seats must start below the screen edge at load (their final spot is higher now), so the start offset is at least what it takes to get there, times 1.5 (longer travel).
+    const seatsOffset=heroMobile.matches?1.5*Math.max(seatH*.6,window.innerHeight-(sceneTopDoc+seats.offsetTop)+24):seatH*.6;
+    const seatsY=heroMobile.matches?(1-sp)*seatsOffset+sp*(treeY+shift):(1-sp)*seatsOffset-treeSpare*sp;
     put(seats,'transform',`translate3d(0,${seatsY}px,0)`);
   }
   function requestDraw(){if(!queued){queued=true;requestAnimationFrame(draw);}}
@@ -177,7 +179,7 @@
     film:['Eternal Sunshine of the Spotless Mind · Michel Gondry','A film recommendation: a conversation about memory, relationships and the things we choose to keep.'],
     slow:['Making room for slow reading','Take time to reread a sentence, make a note and talk about what stayed with you, without needing to finish every book.']
   };
-  const dialog=document.querySelector('#detail-dialog');document.querySelectorAll('[data-detail]').forEach(button=>button.addEventListener('click',event=>{event.preventDefault();const item=details[button.dataset.detail];const tt=window.TGA_t||(s=>s);document.querySelector('#dialog-title').textContent=tt(item[0]);document.querySelector('#dialog-description').textContent=tt(item[1]);dialog.showModal();}));
+  const dialog=document.querySelector('#detail-dialog');document.querySelectorAll('[data-detail]').forEach(button=>button.addEventListener('click',event=>{event.preventDefault();if(button.dataset.href){location.href=button.dataset.href;return;}const item=details[button.dataset.detail];const tt=window.TGA_t||(s=>s);document.querySelector('#dialog-title').textContent=tt(item[0]);document.querySelector('#dialog-description').textContent=tt(item[1]);dialog.showModal();}));
   dialog.querySelectorAll('.dialog-close,.dialog-done').forEach(b=>b.addEventListener('click',()=>dialog.close()));dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
   document.querySelector('#newsletter-form').addEventListener('submit',e=>{e.preventDefault();document.querySelector('#form-status').textContent=(window.TGA_t||(s=>s))('Thank you!');e.target.reset();});
 })();
