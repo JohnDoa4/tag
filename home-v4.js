@@ -95,7 +95,7 @@
     }else sp=ease((p-.22)/.78);
     // Desktop: the seats' travel is 0.6 of their own height (half of the former 1.2). Mobile: once settled the seats stay glued to the tree (they follow its remaining travel); desktop keeps the fixed end position.
     // Mobile: the seats must start below the screen edge at load (their final spot is higher now), so the start offset is at least what it takes to get there, times 1.5 (longer travel).
-    const seatsOffset=heroMobile.matches?1.5*Math.max(seatH*.6,window.innerHeight-(sceneTopDoc+seats.offsetTop)+24):seatH*.6;
+    const seatsOffset=heroMobile.matches?1*Math.max(seatH*.6,window.innerHeight-(sceneTopDoc+seats.offsetTop)+24):seatH*.6;
     const seatsY=heroMobile.matches?(1-sp)*seatsOffset+sp*(treeY+shift):(1-sp)*seatsOffset-treeSpare*sp;
     put(seats,'transform',`translate3d(0,${seatsY}px,0)`);
   }
