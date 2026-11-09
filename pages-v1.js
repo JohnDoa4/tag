@@ -1,6 +1,7 @@
 (()=>{
   const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+  const T=s=>window.TGA_t?window.TGA_t(s):s; // text from the language engine (i18n-v3.js), English if it is not loaded
   const store={get(k,d){try{const v=sessionStorage.getItem(k);return v===null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{sessionStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
 
   // Header: same behaviour as the home page (menu button, More, hide on scroll down).
@@ -51,7 +52,7 @@
         el.hidden=!ok;if(ok)n++;
         if(el.closest('li'))el.closest('li').hidden=!ok;
       });
-      if(note)note.textContent=n?`Showing ${n} ${n===1?group.dataset.noun||'item':(group.dataset.nouns||'items')}`:'Nothing here for these filters yet. Try another one.';
+      if(note)note.textContent=n?T(`Showing {n} ${n===1?group.dataset.noun||'item':(group.dataset.nouns||'items')}`).replace('{n}',n):T('Nothing here for these filters yet. Try another one.');
       $$('.mgrid .ev').forEach(ev=>{const ok=['type','price'].every(k=>!state[k]||state[k]==='all'||ev.dataset[k]===state[k]);ev.classList.toggle('is-dim',!ok);});
     };
     group.addEventListener('click',e=>{const b=e.target.closest('button[data-k]');if(!b)return;
@@ -60,6 +61,7 @@
     group.addEventListener('change',e=>{const s=e.target.closest('select[data-k]');if(!s)return;state[s.dataset.k]=s.value;apply();});
     group.querySelectorAll('select[data-k]').forEach(s=>state[s.dataset.k]=s.value);
     group.querySelectorAll('button[data-k][aria-pressed=true]').forEach(b=>state[b.dataset.k]=b.dataset.v);
+    document.addEventListener('tga:lang',apply);
     apply();
   });
 
@@ -72,9 +74,10 @@
       const m=b.dataset.view==='month';listV.hidden=m;monthV.hidden=!m;
     }));
     const grids=$$('.mgrid'),title=$('#month-title');let mi=0;
-    const show=i=>{mi=(i+grids.length)%grids.length;grids.forEach((g,k)=>g.hidden=k!==mi);title.textContent=grids[mi].dataset.title;};
+    const show=i=>{mi=(i+grids.length)%grids.length;grids.forEach((g,k)=>g.hidden=k!==mi);title.textContent=T(grids[mi].dataset.title);};
     $('#month-prev')?.addEventListener('click',()=>show(mi-1));$('#month-next')?.addEventListener('click',()=>show(mi+1));
     if(grids.length)show(0);
+    document.addEventListener('tga:lang',()=>show(mi));
   }
 
   // Tabs (auth, account): hash driven.

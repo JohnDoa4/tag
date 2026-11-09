@@ -29,7 +29,7 @@ body.pg{overflow-x:clip}
 
 /* ---------- page head ---------- */
 .pg-head{position:relative;isolation:isolate;overflow-x:clip;padding-block:clamp(2.75rem,6vw,5.5rem) clamp(2rem,4vw,3.5rem)}
-.pg-head::after{content:'';position:absolute;z-index:-1;inset-block-start:-1.5rem;inset-inline-end:calc(var(--gutter)*-.5);width:min(32rem,44vw);aspect-ratio:1;background:url(assets-v3/botanical-branch-v1.jpg) center/contain no-repeat;mix-blend-mode:multiply;opacity:.5;pointer-events:none;-webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent);mask-image:radial-gradient(closest-side,#000 62%,transparent)}
+.pg-head::after{content:'';position:absolute;z-index:-1;inset-block-start:-1.5rem;inset-inline-end:calc(var(--gutter)*-.5);width:min(32rem,44vw);aspect-ratio:1;background:url(assets/botanical-branch-v1.jpg) center/contain no-repeat;mix-blend-mode:multiply;opacity:.5;pointer-events:none;-webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent);mask-image:radial-gradient(closest-side,#000 62%,transparent)}
 .pg-head--flip::after{transform:scaleX(-1);inset-inline-end:auto;inset-inline-start:calc(var(--gutter)*-.5)}
 .pg-head h1{font-size:clamp(2.75rem,7.4vw,7rem);line-height:.98;margin:1rem 0 0;max-width:13ch}
 .pg-head .lede{margin-top:clamp(1.25rem,2.5vw,2rem)}
@@ -255,8 +255,8 @@ body.pg{overflow-x:clip}
 /* ---------- torn paper edge section ---------- */
 .torn{position:relative;background:var(--tint);padding-block:calc(5rem + 40px);overflow:clip}
 .torn::before,.torn::after{content:'';position:absolute;inset-inline:0;aspect-ratio:1440/70;background-repeat:no-repeat;background-size:100% 100%;pointer-events:none;z-index:1}
-.torn::before{top:0;background-image:url(assets-v3/paper-1.png)}
-.torn::after{bottom:0;background-image:url(assets-v3/paper-2.png)}
+.torn::before{top:0;background-image:url(assets/paper-1.png)}
+.torn::after{bottom:0;background-image:url(assets/paper-2.png)}
 .torn--blush{background:var(--blush)}
 @media(max-width:43.75rem){.torn{padding-block:80px}.torn::before,.torn::after{height:35px;background-size:auto 100%;background-position:center}}
 
@@ -574,3 +574,6 @@ dialog.mdl .sum-row--total{font-size:1.5rem}
 .smap ul b{font-weight:500;font-size:.9375rem}
 @media(hover:hover){.smap-top:hover,.smap-root a:hover,.smap ul a:hover b{color:var(--terra)}}
 @media(max-width:40rem){.smap-top,.smap-root a{grid-template-columns:3rem minmax(0,1fr)}.smap ul{margin-inline-start:3rem}}
+
+/* First heading (h1) in the hero of the inner pages: #5D6939 */
+.pg-head h1,.cal-hero h1{color:#5D6939}

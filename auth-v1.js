@@ -137,7 +137,7 @@
     const nx=live[0],box=$('#next-up');
     box.hidden=!nx;$('#next-empty').hidden=!!nx;
     if(nx){
-      $('#nu-img').src='assets-v3/'+nx.dataset.img;$('#nu-img').alt=nx.dataset.alt;
+      $('#nu-img').src='assets/'+nx.dataset.img;$('#nu-img').alt=nx.dataset.alt;
       $('#nu-type').textContent=nx.dataset.kind+' · '+nx.dataset.price;
       $('#nu-title').textContent=nx.dataset.title;$('#nu-when').textContent=nx.dataset.when;$('#nu-link').href=nx.dataset.href;
     }
