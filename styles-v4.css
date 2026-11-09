@@ -520,3 +520,36 @@ h2 em.alt{font-family:"Cormorant Garamond",Georgia,serif!important;font-style:it
 /* Psychotherapy illustration (conversation.png 1494x626): show the whole picture, fit to its block width, no crop */
 .therapy img{width:100%;height:auto;max-height:none;aspect-ratio:1494/626;object-fit:contain;object-view-box:none}
 @media(max-width:700px){.therapy img{aspect-ratio:1494/626}}
+
+/* ===== Mobile, all pages: subscription block (Figma 935:5507) and footer (Figma 935:5534) =====
+   moved here from calendar-v1.css so that every page shows the same block */
+@media(max-width:700px){
+  /* subscription block: 16px between eyebrow, heading and text; 40px before the form */
+  .newsletter{gap:40px}
+  .newsletter .eyebrow{font-size:12px;letter-spacing:2px;line-height:1!important}
+  .newsletter h2{margin:16px 0;letter-spacing:-.02em!important}
+  .newsletter>div>p:not(.eyebrow){line-height:1.5!important}
+  .newsletter form{padding-bottom:15px}
+  .newsletter form>label:not(.checkbox){font-size:12px;letter-spacing:2px;line-height:1!important}
+  .newsletter .email-row{margin:8px 0 0}
+  .newsletter .email-row input{padding-block:14px;font-size:16px;line-height:1;min-height:0}
+  .newsletter .checkbox{margin:0;padding:20px 0 14px;gap:10px;font-size:12px}
+  .newsletter .checkbox span{font-size:12px;line-height:1.5!important}
+  .newsletter .form-status:empty{display:none}
+
+  /* footer: logo centred 150x68, columns with 16px gaps, 9px captions, centred slogan, thin rule above the bottom row */
+  .footer-brand{display:flex;justify-content:center}
+  .footer-brand img{width:150px;height:68px;object-fit:contain}
+  footer .footer-top>div{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+  footer .footer-top>div>*{margin:0;line-height:normal!important}
+  footer .footer-top .eyebrow{font-size:9px;letter-spacing:1.98px}
+  footer .footer-wordmark{margin:0;padding-top:24px;text-align:center;letter-spacing:-1.125px!important}
+  footer .footer-bottom{margin-top:32px;padding-top:20px;border-top:1px solid #526b57}
+  footer .footer-bottom a[href="#top"]::after{content:" \2191"}
+}
+@media(max-width:700px){
+  .newsletter form>label:not(.checkbox){display:block}
+  .newsletter .email-row input{height:44px;padding-block:0}
+  .newsletter .email-row button{height:44px;padding:0 14px;line-height:1!important}
+}
+@media(max-width:700px){#newsletter-form .email-row+.checkbox{margin-top:0}}

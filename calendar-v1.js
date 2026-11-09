@@ -42,7 +42,7 @@
 (()=>{
   const sec=document.querySelector('.cal-steps'),arches=[...document.querySelectorAll('.cal-arch')];
   if(!sec||!arches.length||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const edge=sec.querySelector('.cal-steps-edge');
+  const edge=sec.querySelector('.cal-steps-edge'),narrow=matchMedia('(max-width:900px)');
   const paint=()=>{
     const r=sec.getBoundingClientRect(),vh=innerHeight;
     if(r.bottom<-200||r.top>vh+200)return;
@@ -54,6 +54,10 @@
       const top=ar.top-cur-r.top,bottom=r.bottom-(ar.bottom-cur); // arch position without its own drift
       let y=p*parseFloat(a.dataset.speed||0);
       y=Math.max(eh-top,Math.min(y,bottom-eh));
+      if(narrow.matches){ // single column: the pictures sit under the text, so keep them close to their own frame (20px of play)
+        const wr=a.parentElement.getBoundingClientRect(),aTop=ar.top-cur,aBottom=ar.bottom-cur;
+        y=Math.max(wr.top-20-aTop,Math.min(y*.5,wr.bottom+20-aBottom));
+      }
       a.style.setProperty('--py',y.toFixed(1)+'px');
     });
   };
@@ -73,4 +77,90 @@
     }
   }));
   targets.forEach(t=>mo.observe(t,{attributes:true,attributeFilter:['hidden'],attributeOldValue:true}));
+})();
+
+/* Mobile filters window: radio options mirror the (hidden) selects, so the list and month filters stay in one place. */
+(()=>{
+  const panel=document.getElementById('cal-filters'),open=document.querySelector('.filters-open'),tb=document.querySelector('.toolbar');
+  if(!panel||!open||!tb)return;
+  const T=s=>window.TGA_t?window.TGA_t(s):s;
+  const sels=[...tb.querySelectorAll('select[data-k]')],radios=[...panel.querySelectorAll('input[type=radio]')];
+  const label=()=>{
+    const n=sels.filter(s=>s.value!=='all').length;
+    open.querySelector('.fl-text').textContent=T('Filters')+(n?' ('+n+')':'');
+    open.classList.toggle('has-active',n>0);
+  };
+  const sync=()=>{radios.forEach(r=>{const s=sels.find(x=>x.dataset.k===r.dataset.k);r.checked=!!s&&s.value===r.value;});label();};
+  const setSel=(s,v)=>{s.value=v;s.dispatchEvent(new Event('change',{bubbles:true}));};
+  radios.forEach(r=>r.addEventListener('change',()=>{const s=sels.find(x=>x.dataset.k===r.dataset.k);if(s)setSel(s,r.value);label();}));
+  panel.querySelector('.fp-clear').addEventListener('click',()=>{sels.forEach(s=>setSel(s,'all'));sync();});
+  const show=()=>{sync();panel.hidden=false;document.documentElement.classList.add('fp-lock');panel.querySelector('.fp-back').focus();};
+  const hide=()=>{if(panel.hidden)return;panel.hidden=true;document.documentElement.classList.remove('fp-lock');open.focus({preventScroll:true});};
+  open.addEventListener('click',show);
+  panel.querySelector('.fp-back').addEventListener('click',hide);
+  panel.querySelector('.fp-apply').addEventListener('click',hide);
+  addEventListener('keydown',e=>{if(e.key==='Escape')hide();});
+  matchMedia('(min-width:701px)').addEventListener('change',e=>{if(e.matches){panel.hidden=true;document.documentElement.classList.remove('fp-lock');}});
+  document.addEventListener('tga:lang',label);
+  label();
+})();
+
+/* Mobile month view: tap a day with events -> bottom sheet with that day's events; tapping one opens its page. */
+(()=>{
+  const month=document.getElementById('cal-month');if(!month)return;
+  const T=s=>window.TGA_t?window.TGA_t(s):s;
+  const narrow=matchMedia('(max-width:700px)');
+  const LABEL={reading:'Reading group',workshop:'Workshop',training:'Training',course:'Course'};
+  const cells=()=>[...month.querySelectorAll('.mgrid>div:not(.dow):not(.off)')].filter(c=>c.querySelector('.ev'));
+  const mark=()=>cells().forEach(c=>{
+    c.classList.add('has-ev');
+    if(narrow.matches){c.setAttribute('role','button');c.tabIndex=0;}else{c.removeAttribute('role');c.removeAttribute('tabindex');}
+  });
+  narrow.addEventListener('change',mark);mark();
+
+  let sheet=null,last=null;
+  const unlock=()=>document.documentElement.classList.remove('fp-lock');
+  const close=()=>{if(!sheet||sheet.hidden)return;sheet.hidden=true;unlock();if(last)last.focus({preventScroll:true});};
+  const build=()=>{
+    sheet=document.createElement('div');sheet.className='dsheet';sheet.hidden=true;
+    sheet.setAttribute('role','dialog');sheet.setAttribute('aria-modal','true');sheet.setAttribute('aria-labelledby','ds-title');
+    sheet.innerHTML='<div class="dsheet-back"></div><div class="dsheet-panel"><span class="dsheet-grab" aria-hidden="true"></span><div class="dsheet-head"><p class="dsheet-title" id="ds-title"></p><button type="button" class="dsheet-close">×</button></div><ul class="dsheet-list"></ul></div>';
+    document.body.appendChild(sheet);
+    sheet.querySelector('.dsheet-back').addEventListener('click',close);
+    sheet.querySelector('.dsheet-close').addEventListener('click',close);
+  };
+  const open=cell=>{
+    const evs=[...cell.querySelectorAll('.ev:not(.is-dim)')];if(!evs.length)return;
+    if(!sheet)build();
+    const grid=cell.closest('.mgrid'),col=[...grid.children].indexOf(cell)%7,dow=grid.querySelectorAll('.dow')[col];
+    sheet.querySelector('.dsheet-title').textContent=(dow?dow.textContent.trim()+', ':'')+cell.querySelector('.d').textContent.trim()+' '+T(grid.dataset.title);
+    sheet.querySelector('.dsheet-close').setAttribute('aria-label',T('Close'));
+    const ul=sheet.querySelector('.dsheet-list');ul.textContent='';
+    evs.forEach(ev=>{
+      const type=ev.dataset.type,time=ev.querySelector('b');
+      const name=[...ev.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim();
+      const li=document.createElement('li'),a=document.createElement('a');a.href=ev.getAttribute('href');
+      const cat=document.createElement('span');cat.className='dsheet-cat';
+      const dot=document.createElement('i');dot.className='dsheet-dot';dot.dataset.type=type;
+      cat.append(dot,document.createTextNode(T(LABEL[type]||'')));
+      const nm=document.createElement('span');nm.className='dsheet-name';nm.textContent=name;
+      const tm=document.createElement('span');tm.className='dsheet-time';tm.textContent=time?time.textContent.trim():'';
+      const go=document.createElement('span');go.className='dsheet-go';go.setAttribute('aria-hidden','true');
+      const im=document.createElement('img');im.src='assets/arrow.png';im.alt='';im.width=16;im.height=16;go.appendChild(im);
+      a.append(cat,nm,tm,go);li.appendChild(a);ul.appendChild(li);
+    });
+    last=cell;sheet.hidden=false;document.documentElement.classList.add('fp-lock');sheet.querySelector('.dsheet-close').focus();
+  };
+  month.addEventListener('click',e=>{
+    if(!narrow.matches)return;
+    const cell=e.target.closest('.mgrid>div.has-ev');if(!cell)return;
+    e.preventDefault();open(cell);
+  });
+  month.addEventListener('keydown',e=>{
+    if(!narrow.matches||(e.key!=='Enter'&&e.key!==' '))return;
+    const cell=e.target.closest('.mgrid>div.has-ev');if(!cell||e.target!==cell)return;
+    e.preventDefault();open(cell);
+  });
+  addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+  narrow.addEventListener('change',e=>{if(!e.matches&&sheet&&!sheet.hidden){sheet.hidden=true;unlock();}});
 })();
