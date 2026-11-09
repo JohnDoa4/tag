@@ -553,3 +553,12 @@ h2 em.alt{font-family:"Cormorant Garamond",Georgia,serif!important;font-style:it
   .newsletter .email-row button{height:44px;padding:0 14px;line-height:1!important}
 }
 @media(max-width:700px){#newsletter-form .email-row+.checkbox{margin-top:0}}
+
+/* mobile menu (Figma 479:1343): the free space is split in two equal springs above and below the list (auto margins),
+   so the list stays centred between the header and the bottom row; every link has the same 8px padding, so the pitch is constant */
+@media(max-width:1120px){
+  .header nav.open{gap:0}
+  .header nav.open .header-links{flex:0 0 auto;display:block;margin:auto 0}
+  .header nav.open .header-tools{margin:0}
+  .header .header-links>li>a,.header .header-links>li.header-extra>a{padding:8px 0;line-height:1.1!important}
+}
