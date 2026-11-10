@@ -565,3 +565,16 @@ h2 em.alt{font-family:"Cormorant Garamond",Georgia,serif!important;font-style:it
 
 /* mobile: breadcrumbs are hidden on every page */
 @media(max-width:700px){.crumbs,.cal .crumbs{display:none!important}}
+
+/* Read, watch, think: four cells, pictures 4:5 */
+.recommendations{grid-template-columns:repeat(4,1fr);gap:2rem}
+.recommendations img{aspect-ratio:4/5;max-height:none}
+.recommendations h3{font-size:1.75rem}
+@media(min-width:701px) and (max-width:1050px){.recommendations{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.recommendations img{aspect-ratio:4/5}.recommendations h3{font-size:24px}}
+
+/* phones: chips are 24px tall with 12px text; a chip with the Zoom logo is 24px too, the logo is 20px */
+@media(max-width:700px){.tags span{display:inline-flex;align-items:center;box-sizing:border-box;height:32px;padding:0 12px;font-size:12px;line-height:1}.tags .zoom-logo{height:20px;width:auto}}
+
+/* phones: page titles in the hero of every inner page are 48px */
+@media(max-width:700px){.pg h1{font-size:48px!important;line-height:1.1!important;overflow-wrap:break-word}}

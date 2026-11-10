@@ -1,0 +1,75 @@
+/* Event tables: one look for the home page, Calendar and Groups & workshops (modelled on Groups & workshops).
+   Row = date | vertical picture 4:5 | eyebrow, title, description, chips | price | arrow. Loads after all other styles. */
+.etable{margin:0;padding:0;list-style:none}
+.etable>li{border-top:1px solid var(--line)}
+.etable>li:first-child{border-top:0}
+.etable>li:last-child{border-bottom:1px solid var(--line)}
+.etable .ledger-row{display:grid;grid-template-columns:5rem 12.5rem minmax(0,1fr) 6rem 3rem;gap:2rem;align-items:center;padding:1.5rem 0;position:relative;color:inherit}
+.etable .ledger-row.is-closed{opacity:.55}
+
+.etable .dnum{display:flex;flex-direction:column;align-items:center;text-align:center;width:5rem;gap:.25rem}
+.etable .dnum strong{font:350 4rem/1.1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.etable .dnum b{font-size:.75rem;font-weight:600;letter-spacing:0;margin:0}
+.etable .dnum span{font-size:.75rem;color:var(--ink);font-variant-numeric:tabular-nums}
+
+.etable .ledger-row .frame{display:block;position:relative;overflow:hidden;margin:0;background:var(--tint);aspect-ratio:4/5;height:auto}
+.etable .frame img{width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;outline:1px solid oklch(0 0 0/.1);outline-offset:-1px;transition:transform .7s cubic-bezier(.23,1,.32,1)}
+.etable .frame--art img{object-fit:contain;padding:1rem;background:#f4f3ea}
+@media(hover:hover){.etable .ledger-row:hover .frame img{transform:scale(1.035)}}
+
+.etable .ledger-copy .eyebrow{font-size:.875rem;letter-spacing:2px;color:var(--ink);margin:0 0 .5rem}
+.etable .ledger-copy h3{margin:0;font-size:2rem;line-height:1.1;letter-spacing:-.02em;transition:color .2s ease}
+.etable .ledger-copy p:not(.eyebrow){margin:.75rem 0 0;font-size:.9375rem;line-height:1.5;color:var(--ink);max-width:32rem}
+@media(hover:hover){.etable .ledger-row:hover h3{color:var(--terra,#9b5e42)}}
+
+/* chips sit under the description: white fill, 30% opacity */
+.etable .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0 0}
+.etable .tags span{display:block;font-size:.75rem;line-height:1;padding:.75rem;border:1px solid var(--line);border-radius:1.5rem;background:rgba(255,255,255,.3);color:var(--ink)}
+.etable .tags span:has(.zoom-logo){padding-block:.625rem}
+.etable .zoom-logo{display:block;height:1rem;width:auto;margin:0}
+
+/* right side: price (if any) and the arrow in a circle */
+.etable .ledger-meta{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:.25rem;text-align:end}
+.etable .price{font:350 1.5rem/1.1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.etable .price--free{color:var(--accent)}
+.etable .ledger-meta .small{font-size:.75rem;color:var(--ink)}
+.etable .ledger-row .round-link{display:grid;place-items:center;padding:0;width:3rem;height:3rem;border:1px solid var(--line);border-radius:1.5rem;transition:background-color .2s ease,border-color .2s ease}
+@media(hover:hover){.etable .ledger-row:hover .round-link{background:var(--accent);border-color:var(--accent)}.etable .ledger-row:hover .round-link img.arrow{filter:brightness(0) invert(1)!important}}
+
+/* tablet: the arrow goes, the rest stays */
+@media(min-width:701px) and (max-width:62rem){
+  .etable .ledger-row{grid-template-columns:4.5rem 9rem minmax(0,1fr) auto;gap:1.25rem}
+  .etable .dnum{width:4.5rem}
+  .etable .dnum strong{font-size:3rem}
+  .etable .ledger-row .round-link{display:none}
+}
+
+/* phone (Figma 935:5132): date and picture on the first line, then text, chips and price */
+@media(max-width:700px){
+  .etable .ledger-row{grid-template-columns:3.4375rem minmax(0,1fr);grid-template-areas:"date img" ". copy" ". meta";gap:.5rem 1rem;padding:.75rem 0;align-items:start}
+  .etable .dnum{grid-area:date;width:100%;gap:0}
+  .etable .dnum strong{font-size:2rem;line-height:1.1}
+  .etable .dnum b,.etable .dnum span{line-height:normal}
+  .etable .dnum span{white-space:nowrap;margin-inline:-1rem}
+  .etable .ledger-row .frame{grid-area:img;align-self:center}
+  .etable .ledger-copy{grid-area:copy}
+  .etable .ledger-copy .eyebrow{margin:0 0 .25rem;font-size:.75rem;font-weight:600;line-height:1;letter-spacing:2px;text-transform:uppercase}
+  .etable .ledger-copy h3{font-size:1.5rem;text-wrap:balance}
+  .etable .ledger-copy p:not(.eyebrow){font-size:.875rem;margin-top:.5rem}
+  .etable .tags{margin-top:.75rem}
+  .etable .tags span{display:inline-flex;align-items:center;height:32px;padding:0 12px;font-size:12px;line-height:1}
+  .etable .tags span:has(.zoom-logo){padding-block:0}
+  .etable .zoom-logo{height:20px}
+  .etable .ledger-meta{grid-area:meta;flex-direction:row;justify-content:flex-start;align-items:center;gap:.5rem;margin-top:-.25rem}
+  .etable .ledger-meta:empty{display:none}
+  .etable .price{display:inline-flex;align-items:center;height:32px;padding:0 12px;border:1px solid var(--line);border-radius:1.5rem;font:400 12px/1 var(--sans);letter-spacing:0;background:rgba(255,255,255,.3)}
+  .etable .ledger-row .round-link{display:none}
+}
+
+/* phones: the price joins the chips, so everything sits in one line and wraps to the next line when it does not fit */
+.etable .tags .tag-price{display:none}
+@media(max-width:700px){
+  .etable .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .etable .tags .tag-price{display:inline-flex}
+  .etable .ledger-meta{display:none}
+}
